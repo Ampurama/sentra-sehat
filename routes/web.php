@@ -43,6 +43,10 @@ Route::middleware(['auth'])->group(function () {
     // Patient Dashboard (only for patient role)
     Route::middleware('role:patient')->group(function () {
         Route::get('/patient/dashboard', [PatientController::class, 'dashboard'])->name('patient.dashboard');
+    });
+
+    // Patient Logout (needs auth but not necessarily patient role check since logout should work for any authenticated user)
+    Route::middleware(['auth'])->group(function () {
         Route::post('/patient/logout', [PatientController::class, 'logout'])->name('patient.logout');
     });
 

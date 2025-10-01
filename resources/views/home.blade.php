@@ -7,7 +7,7 @@
 <!-- CDN dan Styling -->
 <!-- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script> -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA3uftsBo3PxYMVTqGSPZbXms_zhLoE994&callback=initDiseaseMap" async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key={{ $googleMapsKey }}&callback=initDiseaseMap" async defer></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <style>
 /* Import Google Fonts */
@@ -866,7 +866,7 @@ function initDiseaseMap() {
         });
     }
 
-    // --- GOOGLE MAPS API ---
+    // --- GOOGLE MAPS   ---
     var map = new google.maps.Map(document.getElementById('disease-map'), {
         center: { lat: -5.4, lng: 119.6 }, // Takalar
         zoom: 10,

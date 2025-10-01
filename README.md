@@ -31,9 +31,17 @@ Selamat datang di Sentra Sehat, aplikasi berbasis Laravel yang dirancang untuk m
    php artisan key:generate
    ```
 
-4. Sesuaikan konfigurasi database di file `.env`.
+4. Konfigurasi Google Maps API Key:
+   - Dapatkan API key dari [Google Cloud Console](https://console.cloud.google.com/)
+   - Aktifkan Google Maps JavaScript API
+   - Tambahkan API key ke file `.env`:
+     ```
+     GOOGLE_MAPS_KEY=your_api_key_here
+     ```
 
-5. **Jalankan migrasi database** (PENTING):
+5. Sesuaikan konfigurasi database di file `.env`.
+
+6. **Jalankan migrasi database** (PENTING):
 
    **Pilih salah satu opsi berikut:**
 
@@ -70,13 +78,13 @@ Selamat datang di Sentra Sehat, aplikasi berbasis Laravel yang dirancang untuk m
    - Data wilayah desa dengan koordinat peta
 
    - Akun admin default untuk setiap role
-6. Jalankan aplikasi:
+7. Jalankan aplikasi:
    ```
    php artisan serve
    npm run dev
    ```
 
-7. Akses aplikasi di `http://localhost:8000`.
+8. Akses aplikasi di `http://localhost:8000`.
 
    **Akun Login Default:**
    - **Super Admin**: email: superadmin@sentrasehat.com, password: password
