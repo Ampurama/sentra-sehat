@@ -35,9 +35,10 @@ class HomeController extends Controller
     public function index()
     {
         $user = Auth::user();
-    $role = $user->role->name ?? 'guest';
+        $role = $user->role->name ?? 'guest';
 
-    $data = [];
+        $data = [];
+        $wilayahs = collect(); // Initialize empty collection for roles that don't need wilayah data
 
     // Set wilayah filter for puskesmas_admin
     $wilayahFilter = null;
@@ -218,7 +219,9 @@ class HomeController extends Controller
         
         // Tambahkan logika untuk role Dokter, Dinkes Admin, dll. di sini.
 
-        return view('home', compact('role', 'data', 'wilayahs'));
+        $googleMapsKey = config('services.google_maps.key');
+
+        return view('home', compact('role', 'data', 'wilayahs', 'googleMapsKey'));
     }
 
     private function getCoordinates($address)
