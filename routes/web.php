@@ -46,9 +46,8 @@ Route::middleware(['auth'])->group(function () {
     });
 
     // Patient Logout (needs auth but not necessarily patient role check since logout should work for any authenticated user)
-    Route::middleware(['auth'])->group(function () {
-        Route::post('/patient/logout', [PatientController::class, 'logout'])->name('patient.logout');
-    });
+    Route::get('/patient/logout', [PatientController::class, 'logout'])->middleware('auth')->name('patient.logout');
+    Route::post('/patient/logout', [PatientController::class, 'logout'])->middleware('auth')->name('patient.logout');
 
     // ---------------------------------------------------------------------
     // 1. MODUL PENGELOLAAN DATA PENDUDUK

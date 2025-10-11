@@ -3,46 +3,59 @@
 @section('title', 'Mulai Tindakan Intervensi')
 
 @section('content')
-
-    {{-- KONTEN UTAMA: Gunakan lebar yang sedikit lebih lebar (max-w-lg) dan p-4/p-8 yang responsif --}}
-    <div class="max-w-lg mx-auto bg-white p-4 sm:p-8 rounded-xl shadow-xl transition-all duration-300">
-        <header class="mb-6 border-b pb-4">
-            <h1 class="text-2xl font-bold text-gray-800 text-center sm:text-left">
-                Mulai Tindakan Intervensi
-            </h1>
-            <p class="text-sm text-gray-500 text-center sm:text-left mt-1">Cari penduduk berdasarkan **NIK atau Nama** untuk memulai pencatatan tindakan dan diagnosis.</p>
-        </header>
+<div class="max-w-md mx-auto w-full px-4">
+    <div class="backdrop-blur-lg bg-white/80 dark:bg-gray-800/80 rounded-2xl shadow-xl border border-gray-200/50 dark:border-gray-700/50 p-6 sm:p-8 transition-all duration-300 hover:shadow-2xl">
+        <div class="text-center mb-8">
+            <div class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-br from-accent-500 to-accent-600 text-white mb-4 shadow-lg">
+                <i class="fas fa-stethoscope text-xl"></i>
+            </div>
+            <h1 class="text-2xl font-bold text-gray-800 dark:text-white">Mulai Tindakan Intervensi</h1>
+            <p class="text-sm text-gray-600 dark:text-gray-300 mt-2 max-w-prose mx-auto">
+                Cari penduduk berdasarkan <strong class="font-medium">NIK atau Nama</strong> untuk memulai pencatatan tindakan dan diagnosis.
+            </p>
+        </div>
 
         @if (session('error'))
-            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg relative mb-4">
-                <span class="block sm:inline">{{ session('error') }}</span>
+            <div class="mb-6 p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-700 dark:text-red-300 flex items-start">
+                <i class="fas fa-exclamation-circle mt-0.5 mr-3 text-red-500"></i>
+                <span>{{ session('error') }}</span>
             </div>
         @endif
 
-        {{-- Formulir Pencarian --}}
-        <form action="{{ route('intervensi.index') }}" method="GET">
-            
-            <div>
-                <label for="keyword" class="block text-sm font-medium text-gray-700 mb-2">Cari NIK atau Nama Penduduk</label>
-                <input type="text" name="keyword" id="keyword" value="{{ old('keyword') }}" required
-                    {{-- Input Padding lebih besar untuk touch target (p-3 ke p-4) --}}
-                    class="block w-full rounded-lg border-gray-300 shadow-md focus:border-blue-500 focus:ring-blue-500 p-4 border transition duration-150"
-                    placeholder="Contoh: 3302xxxxxxxxxxxxxx atau Budi Santoso">
-                
+        <form action="{{ route('intervensi.index') }}" method="GET" class="space-y-6">
+            <div class="relative">
+                <label for="keyword" class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">
+                    Cari NIK atau Nama Penduduk
+                </label>
+                <div class="relative">
+                    <div class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none text-gray-400">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <input
+                        type="text"
+                        name="keyword"
+                        id="keyword"
+                        value="{{ old('keyword') }}"
+                        required
+                        class="w-full pl-12 pr-4 py-4 rounded-xl border border-gray-300/50 dark:border-gray-600/50 bg-white dark:bg-gray-800/60 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent-500/30 focus:border-accent-500 shadow-sm transition-all duration-200"
+                        placeholder="Contoh: 3302... atau Budi Santoso"
+                    >
+                </div>
                 @error('keyword')
-                    <p class="mt-2 text-sm text-red-500">{{ $message }}</p>
+                    <p class="mt-2 text-sm text-red-500 flex items-center">
+                        <i class="fas fa-exclamation-circle mr-1"></i> {{ $message }}
+                    </p>
                 @enderror
             </div>
 
-            <div class="mt-6">
-                {{-- Tombol dengan padding vertikal lebih besar untuk touch target (py-3 ke py-4) --}}
-                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-6 rounded-xl shadow-lg transition duration-300 transform hover:scale-[1.01] flex items-center justify-center">
-                    <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                    Cari Pasien
-                </button>
-            </div>
+            <button
+                type="submit"
+                class="w-full bg-gradient-to-r from-accent-600 to-accent-500 hover:from-accent-700 hover:to-accent-600 text-white font-semibold py-4 px-6 rounded-xl shadow-lg transition-all duration-300 transform hover:scale-[1.02] hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-accent-400/50 flex items-center justify-center group"
+            >
+                <i class="fas fa-search mr-3 group-hover:rotate-12 transition-transform duration-200"></i>
+                Cari Pasien
+            </button>
         </form>
     </div>
-    
-
+</div>
 @endsection
