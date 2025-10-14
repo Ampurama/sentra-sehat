@@ -258,6 +258,11 @@ class PendudukController extends Controller
      */
     public function destroy(Penduduk $penduduk)
     {
+        $user = auth()->user();
+        if ($user && $user->role->name === 'kades') {
+            abort(403, 'Anda tidak memiliki akses untuk menghapus data penduduk.');
+        }
+
         $penduduk->delete();
 
         return redirect()->route('penduduk.index')

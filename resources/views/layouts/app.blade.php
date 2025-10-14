@@ -793,13 +793,13 @@
         <!-- Header -->
         <header class="header-bg h-[var(--header-height)] flex items-center justify-between px-6 lg:px-8 z-30">
             
-            <div class="flex items-center gap-4 flex-1">
+            <div class="flex items-center gap-4 flex-1 min-w-0">
                 @if (!View::hasSection('hide_navigation'))
-                <button id="sidebar-toggle" class="lg:hidden header-btn p-3" onclick="toggleSidebar()">
+                <button id="sidebar-toggle" class="lg:hidden header-btn p-3 flex-shrink-0" onclick="toggleSidebar()">
                     <i class="fas fa-bars text-lg text-gray-700 dark:text-gray-300"></i>
                 </button>
                 @endif
-                <h1 class="page-title text-2xl lg:text-3xl @if (!View::hasSection('hide_navigation')) ml-0 lg:ml-0 @endif">@yield('title', 'Dashboard')</h1>
+                <h1 class="page-title text-xl lg:text-2xl xl:text-3xl @if (!View::hasSection('hide_navigation')) ml-0 lg:ml-0 @endif break-words leading-tight flex-1 min-w-0 overflow-hidden text-ellipsis whitespace-nowrap">@yield('title', 'Dashboard')</h1>
             </div>
 
             <!-- Right Section -->

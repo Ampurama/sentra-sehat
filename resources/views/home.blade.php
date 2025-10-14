@@ -429,6 +429,24 @@ body {
 
         <!-- Quick Stats Preview -->
         <div class="stats-grid">
+            @if($role == 'kades')
+            <div class="stat-item fade-in-delay-1">
+                <div class="text-3xl font-black gradient-text">{{ $data['total_penduduk_desa'] ?? 0 }}</div>
+                <div class="text-sm text-white/80 font-medium mt-1">Penduduk Desa</div>
+            </div>
+            <div class="stat-item fade-in-delay-2">
+                <div class="text-3xl font-black gradient-text">{{ $data['total_intervensi_desa'] ?? 0 }}</div>
+                <div class="text-sm text-white/80 font-medium mt-1">Intervensi Desa</div>
+            </div>
+            <div class="stat-item fade-in-delay-3">
+                <div class="text-3xl font-black gradient-text">{{ $data['intervensi_bulan_ini'] ?? 0 }}</div>
+                <div class="text-sm text-white/80 font-medium mt-1">Intervensi Bulan Ini</div>
+            </div>
+            <div class="stat-item fade-in-delay-4">
+                <div class="text-3xl font-black gradient-text">{{ $data['kasus_penyakit'] ?? 0 }}</div>
+                <div class="text-sm text-white/80 font-medium mt-1">Kasus Penyakit</div>
+            </div>
+            @else
             <div class="stat-item fade-in-delay-1">
                 <div class="text-3xl font-black gradient-text">{{ $data['total_penduduk'] ?? 0 }}</div>
                 <div class="text-sm text-white/80 font-medium mt-1">Total Penduduk</div>
@@ -445,6 +463,7 @@ body {
                 <div class="text-3xl font-black gradient-text">{{ $data['total_obat'] ?? 0 }}</div>
                 <div class="text-sm text-white/80 font-medium mt-1">Obat</div>
             </div>
+            @endif
         </div>
     </div>
 </div>
@@ -830,13 +849,13 @@ body {
                         <tr>
                             <td class="px-8 py-5">
                                 <div class="flex items-center gap-4">
-                                    <div class="w-12 h-12 rounded-2xl flex items-center justify-center font-black text-white text-lg" 
+                                    <div class="w-12 h-12 rounded-2xl flex items-center justify-center font-black text-white text-lg"
                                          style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
                                         {{ substr($dist->nama_desa ?? $dist['name'], 0, 1) }}
                                     </div>
                                     <div>
                                         <div class="font-bold text-gray-900 text-base">{{ $dist->nama_desa ?? $dist['name'] }}</div>
-                                        <div class="text-sm text-gray-500">Wilayah {{ $index + 1 }}</div>
+                                        <div class="text-sm text-gray-500">{{ $dist->nama_kecamatan ?? '' }}, {{ $dist->nama_kabupaten ?? '' }}</div>
                                     </div>
                                 </div>
                             </td>

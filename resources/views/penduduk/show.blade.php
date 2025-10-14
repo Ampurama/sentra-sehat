@@ -61,7 +61,7 @@
 
                     <div>
                         <p class="font-medium text-gray-500">Wilayah Tercatat:</p>
-                        <p class="font-semibold text-emerald-600">{{ $penduduk->wilayah->nama_kecamatan ?? 'Wilayah Tidak Ditemukan' }}</p>
+                        <p class="font-semibold text-emerald-600">{{ $penduduk->wilayah->nama_desa ?? 'Wilayah Tidak Ditemukan' }}, {{ $penduduk->wilayah->nama_kecamatan ?? '' }}</p>
                     </div>
                     
                     <div>
@@ -82,11 +82,10 @@
                     <a href="{{ route('intervensi.create', ['penduduk_id' => $penduduk->id]) }}" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl shadow-md transition duration-300 text-center">
                         + Catat Intervensi
                     </a>
-                    @endif
                     <a href="{{ route('penduduk.edit', $penduduk->id) }}" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-xl shadow-md transition duration-300 text-center">
                         Edit Data
                     </a>
-                    
+
                     {{-- Tombol Delete --}}
                     <form action="{{ route('penduduk.destroy', $penduduk->id) }}" method="POST" class="inline" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini? Aksi ini tidak dapat dibatalkan.');">
                         @csrf
@@ -95,6 +94,7 @@
                             Hapus Data
                         </button>
                     </form>
+                    @endif
                 </div>
             </div>
 

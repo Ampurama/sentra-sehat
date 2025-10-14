@@ -48,7 +48,7 @@
                                 <div>
                                     <h3 class="font-semibold text-gray-800">{{ $pendudukItem->nama }}</h3>
                                     <p class="text-sm text-gray-600">NIK: {{ $pendudukItem->NIK }}</p>
-                                    <p class="text-sm text-gray-600">Wilayah: {{ $pendudukItem->wilayah->nama_kecamatan ?? 'N/A' }} - {{ $pendudukItem->wilayah->nama_desa ?? 'N/A' }}</p>
+                                    <p class="text-sm text-gray-600">Wilayah: {{ $pendudukItem->wilayah->nama_desa ?? 'N/A' }}, {{ $pendudukItem->wilayah->nama_kecamatan ?? 'N/A' }}</p>
                                 </div>
                                 <div class="text-right">
                                     <p class="text-sm text-gray-500">{{ $pendudukItem->JK == 'L' ? 'Laki-laki' : 'Perempuan' }}</p>

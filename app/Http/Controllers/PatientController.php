@@ -22,7 +22,7 @@ class PatientController extends Controller
         $penduduk = $user->penduduk;
 
         if (!$penduduk) {
-            return redirect()->route('login')->with('error', 'Data penduduk tidak ditemukan.');
+            return redirect()->route('patient.login.form')->with('error', 'Data penduduk tidak ditemukan.');
         }
 
         // Get intervention history for this patient
@@ -263,6 +263,6 @@ class PatientController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/patient/login');
+        return redirect()->route('login');
     }
 }
