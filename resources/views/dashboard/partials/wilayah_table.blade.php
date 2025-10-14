@@ -19,7 +19,7 @@
                         </div>
                         <div class="ml-4">
                             <div class="text-sm font-medium text-gray-900">{{ $dist->nama_desa ?? $dist['name'] }}</div>
-                            <div class="text-sm text-gray-500">Wilayah {{ $index + 1 }}</div>
+                            <div class="text-sm text-gray-500">{{ $dist->nama_kecamatan ?? '' }}, {{ $dist->nama_kabupaten ?? '' }}</div>
                         </div>
                     </div>
                 </td>

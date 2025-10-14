@@ -16,6 +16,11 @@
 - [x] Step 13: Add delete functionality for Puskesmas Admin and Kades users with confirmation.
 - [x] Step 14: Update sidebar navigation to link to user management index.
 - [x] Step 15: Create edit forms for Puskesmas Admin and Kades with pre-filled data.
+- [x] Step 16: Prevent patient role users from accessing admin login form (/login).
+- [x] Step 17: Add role selection (Admin/Patient) to login form with dynamic field switching.
+- [x] Step 18: Update LoginController to handle role-based authentication and redirects.
+- [x] Step 19: Override default login route to prevent patient access to admin form.
+- [x] Step 20: Disable patient login button on welcome page.
 
 ## Details
 - Puskesmas admins are restricted to their assigned kecamatan.
